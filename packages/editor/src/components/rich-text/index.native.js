@@ -243,10 +243,6 @@ export class RichText extends Component {
 			this.lastEventCount = undefined; // force a refresh on the native side
 		}
 
-		if ( nextState.start !== this.state.start || nextState.end !== this.state.end ) {
-			return false;
-		}
-
 		return true;
 	}
 

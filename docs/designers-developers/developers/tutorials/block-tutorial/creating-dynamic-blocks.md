@@ -114,6 +114,16 @@ function my_plugin_render_block_latest_post( $attributes, $content ) {
 register_block_type( 'my-plugin/latest-post', array(
 	'render_callback' => 'my_plugin_render_block_latest_post',
 ) );
+
+// Render callback in frontend requires an earlier hook, otherwise no output will be provided while adding it to INIT hook
+function gutenberg_boilerplate_block5_output() {
+    register_block_type( 'my-plugin/latest-post', array(
+        'render_callback' => 'my_plugin_render_block_latest_post',
+    ) );
+}
+add_action( 'plugins_loaded', 'gutenberg_boilerplate_block5_output' );
+
+
 ```
 
 There are a few things to notice:
